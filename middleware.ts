@@ -9,6 +9,10 @@ export const middleware = async (req: NextRequest) => {
     const token = await getToken({ req })
     const { pathname } = req.nextUrl
 
+    if (pathname === "/") {
+        return NextResponse.redirect(new URL(token ? "/home" : "/sign-in", req.url))
+    }
+
     if (token && authRoutes.some((r)=>pathname.startsWith(r))) {
         return NextResponse.redirect(new URL("/home", req.url))
     }
@@ -23,5 +27,5 @@ export const middleware = async (req: NextRequest) => {
 }
 
 export const config = {
-    matcher: ["/home/:path*", "/sign-in", "/sign-up"],
+    matcher: ["/","/home/:path*", "/sign-in", "/sign-up"],
 }

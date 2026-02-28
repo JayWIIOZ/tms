@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Dashboard 开发与启动
+
+- **首页入口**：登录后固定入口为 [http://localhost:3000/home](http://localhost:3000/home)。根路径 `/` 会根据登录状态重定向到 `/home` 或 `/sign-in`。
+- **本地运行**：
+  1. 复制 `.env.example` 为 `.env`，填写 `DATABASE_URL`、`NEXTAUTH_SECRET`、`NEXTAUTH_URL` 等（见文件内注释）。
+  2. 执行 `npx drizzle-kit push` 或 `npx drizzle-kit migrate` 同步数据库（若需）。
+  3. `npm run dev` 启动开发服务器。
+- **校验**：提交前请执行 `npm run lint` 与 `npm run build` 确保通过。
